@@ -26,6 +26,16 @@ const QuestionContainer = ({
   currSubmission,
   saveSubmission,
 }: QuestionContainerProps) => {
+  const getOptionClasses = (is_checked: boolean) => {
+    return clsx(
+      "px-4 py-8 rounded-lg",
+      `${
+        is_checked
+          ? "border-2 border-successPrimary"
+          : "bg-slate-100 border-2 border-transparent"
+      }`
+    );
+  };
   const renderOptions = () => {
     if (!currQuestion || currQuestion?.options.length === 0) return [];
     let options: React.ReactNode[] = [];
@@ -36,18 +46,12 @@ const QuestionContainer = ({
       if (isMultiselect) {
         let answer = currSubmission?.answer || [];
         let is_checked = answer?.includes(option.id);
+        let classes = getOptionClasses(is_checked);
         element = (
           <Checkbox
             key={option.id}
             label={option.text}
-            classes={clsx(
-              "px-4 py-8 rounded-lg",
-              `${
-                is_checked
-                  ? "border-2 border-successPrimary"
-                  : "bg-slate-100 border-2 border-transparent"
-              }`
-            )}
+            classes={classes}
             checked={is_checked}
             onCheckboxClick={onCheckboxClick.bind(null, answer, option)}
           />
@@ -55,19 +59,13 @@ const QuestionContainer = ({
       } else {
         let answer = currSubmission?.answer;
         let is_checked = answer === option.id;
+        let classes = getOptionClasses(is_checked);
         element = (
           <Radio
             key={option.id}
             label={option.text}
             name={`${currQuestion.id}`}
-            classes={clsx(
-              "px-4 py-8 rounded-lg",
-              `${
-                is_checked
-                  ? "border-2 border-successPrimary"
-                  : "bg-slate-100  border-2 border-transparent"
-              }`
-            )}
+            classes={classes}
             checked={is_checked}
             onChange={onRadioClick.bind(null, option)}
           />

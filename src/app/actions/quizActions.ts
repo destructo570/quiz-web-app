@@ -18,3 +18,12 @@ export const updateUserSubmission = async (quiz_id: number, submission: Submissi
     //Error handling
   }
 };
+
+export const getUserFinalScore = async (quiz_id: number) => {
+  try {
+    const response = await axios.get(`/api/quiz/${quiz_id}/score`);
+    return response;
+  } catch (error) {
+    //Error handling
+  }
+};
