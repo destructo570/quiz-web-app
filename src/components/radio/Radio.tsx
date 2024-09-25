@@ -9,17 +9,13 @@ type CustomCheckboxProps = {
 } & React.ComponentProps<"input">;
 
 const Radio = (props: CustomCheckboxProps) => {
-  const { classes, label, checked, ...rest } = props;
-  const defaultState = checked ? checked : false;
-  const [isChecked, setIsChecked] = useState(defaultState);
+  const { classes, label, ...rest } = props;
   return (
-    <div className="radio-wrapper">
+    <div className={clsx("radio-wrapper", classes)}>
       <label className="flex gap-4 items-center cursor-pointer">
         <input
           type="radio"
-          className={clsx("radio-input", classes, { checked: isChecked })}
-          checked={isChecked}
-          onChange={() => setIsChecked((prev) => !prev)}
+          className={clsx("radio-input")}
           {...rest}
         />
         <span className="font-bold">{label}</span>

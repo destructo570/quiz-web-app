@@ -35,7 +35,7 @@
     transition: opacity 0.3s ease;
   }
 
-  &.checked {
+  &:checked {
     border-color: #44b77b !important; /* Selected color */
     background-color: #fff;
 
