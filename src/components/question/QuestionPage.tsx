@@ -5,6 +5,7 @@ import "./questions.scss";
 import { Quiz, Submission } from "@/utils/types";
 import QuestionContainer from "./QuestionContainer";
 import ScorePage from "./ScorePage";
+import { updateUserSubmission } from "@/app/actions/quizActions";
 
 interface QuestionPageProps {
   quiz: Quiz | null;
@@ -22,6 +23,7 @@ const QuestionPage = ({
   const questions = quiz?.questions || [];
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [show_score_page, setShowScorePage] = useState(false);
+  const [savingSubmission, setSavingSubmission] = useState(false);
 
   const currQuestion = useMemo(
     () => questions?.[currentQuestion],
@@ -41,9 +43,19 @@ const QuestionPage = ({
     [currentQuestion, questions?.length]
   );
 
+  const onUpdateUserSubmission = async (submission: Submission | undefined) => {
+    if (!quiz || !submission) return;
+    setSavingSubmission(true);
+    const response = await updateUserSubmission(quiz.id, submission);
+    if (response?.status === 200) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+    setSavingSubmission(false);
+  };
+
   const onNextClick = () => {
     if (currentQuestion + 1 < questions?.length && !is_last_question) {
-      setCurrentQuestion(currentQuestion + 1);
+      onUpdateUserSubmission(currSubmission);
     } else if (is_last_question) {
       setShowScorePage(true);
     }
@@ -82,7 +94,8 @@ const QuestionPage = ({
           disabled={
             !currSubmission?.answer ||
             (currQuestion.has_multiple_answers &&
-              !currSubmission?.answer?.length)
+              !currSubmission?.answer?.length) ||
+            savingSubmission
           }
         >
           <div className="flex gap-4 items-center">

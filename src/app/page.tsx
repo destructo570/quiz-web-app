@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const response = await fetchQuizData();
+      const response = await fetchQuizData(1);
       if (response?.status === 200) {
         setQuiz(response?.data);
       }

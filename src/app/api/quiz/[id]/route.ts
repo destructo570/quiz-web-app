@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: Request,  { params }: { params: { id: string } }) {
+  let id = params.id
+  //Logic to fetch quiz with id
+  
   return NextResponse.json({
     id: 1,
     questions: [
@@ -54,5 +57,15 @@ export async function GET(request: Request) {
         correctAnswer: 3,
       },
     ],
+  });
+}
+
+export async function PUT(request: Request) {
+  const body = await request.json();
+  console.log("body", body);
+  
+  //Logic to store the submissions in the database
+  return NextResponse.json({
+    message: "success",
   });
 }
