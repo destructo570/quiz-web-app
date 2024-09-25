@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Nunito, Poppins} from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -17,17 +16,11 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Quiz App",
-  description: "Quiz App",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  //`${geistSans.variable} ${geistMono.variable} antialiased`
   return (
     <html lang="en">
       <body
