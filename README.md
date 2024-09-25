@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Quiz App
+This project is a quiz application built with Next.js 14. It features a timer that tracks the time taken by a user to answer each question and resets for each new question. The app also stores the time spent on each question, allowing for analysis of quiz performance.
 
-## Getting Started
+## Technologies Used
+- Next.js: Framework for server-rendered React applications.
+- TailwindCss: CSS Framework for styling the application.
+- TypeScript
+- React Hooks: Used for state management and side effects (useState, useEffect).
+- clsx: For managing class strings.
+- react-circular-progressbar: To show progress.
+- react-rewards: For confetti animations.
+- Axios: HTTP client.
 
-First, run the development server:
+## Run the project locally
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. First, clone the repository into your local machine.
+   ```bash
+     git clone https://github.com/destructo570/quiz-web-app.git
+   ```
+2. Change directory into the project folder:
+   ```bash
+     cd quiz-web-app
+   ```
+3. Open root directory in terminal and run
+   ```bash
+      npm install
+   ```
+4. Then run the development server
+   ```bash
+      npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints
+```/api/quiz/[id]```: [GET] Fetch a specific quiz by ID.\
+```/api/quiz/[id]/submission```: [PUT] Save a submission for particulat question by quiz ID.\
+```/api/quiz/[id]/score```: [GET] Fetch final score for the quiz by ID.\
