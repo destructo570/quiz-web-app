@@ -10,9 +10,9 @@ export const fetchQuizData = async (quiz_id: number) => {
   }
 };
 
-export const updateUserSubmission = async (quiz_id: number, submission: Submission) => {
+export const saveUserSubmission = async (quiz_id: number, submission: Submission) => {
   try {
-    const response = await axios.put(`/api/quiz/${quiz_id}`, submission);
+    const response = await axios.put(`/api/quiz/${quiz_id}/submission`, submission);
     return response;
   } catch (error) {
     //Error handling

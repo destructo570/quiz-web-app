@@ -59,13 +59,3 @@ export async function GET(request: Request,  { params }: { params: { id: string 
     ],
   });
 }
-
-export async function PUT(request: Request) {
-  const body = await request.json();
-  console.log("body", body);
-  
-  //Logic to store the submissions in the database
-  return NextResponse.json({
-    message: "success",
-  });
-}

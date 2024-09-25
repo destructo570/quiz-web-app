@@ -5,7 +5,7 @@ import "./questions.scss";
 import { Quiz, Submission } from "@/utils/types";
 import QuestionContainer from "./QuestionContainer";
 import ScorePage from "./ScorePage";
-import { updateUserSubmission } from "@/app/actions/quizActions";
+import { saveUserSubmission } from "@/app/actions/quizActions";
 
 interface QuestionPageProps {
   quiz: Quiz | null;
@@ -54,7 +54,7 @@ const QuestionPage = ({
   const onUpdateUserSubmission = async (submission: Submission | undefined) => {
     if (!quiz || !submission) return;
     setSavingSubmission(true);
-    const response = await updateUserSubmission(quiz.id, submission);
+    const response = await saveUserSubmission(quiz.id, submission);
     if (response?.status === 200) {
       if (!is_last_question) {
         setCurrentQuestion(currentQuestion + 1);
