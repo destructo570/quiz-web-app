@@ -43,7 +43,7 @@ export async function GET(request: Request) {
       {
         id: 4,
         question: "Can you identify the country based on the image below?",
-        image: "https://imgur.com/YB0l3zq",
+        image: "https://imgur.com/YB0l3zq.png",
         has_multiple_answers: false,
         options: [
           { id: 1, text: "United States" },
