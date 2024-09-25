@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Nunito } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import clsx from "clsx";
 
+const nunito = Nunito({ subsets: ["latin"] });
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -23,10 +26,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  //`${geistSans.variable} ${geistMono.variable} antialiased`
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={clsx(
+          geistSans.variable,
+          geistMono.variable,
+          nunito.className,
+          "antialiased"
+        )}
       >
         {children}
       </body>
