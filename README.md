@@ -13,6 +13,26 @@ This project is a quiz application built with Next.js 14. It features a timer th
 
 ## Run the project locally
 
+## Running the App with Docker
+You can run the application inside a Docker container. To do so, follow the steps below.
+### Prerequisites
+
+- Ensure you have [Docker](https://www.docker.com/) installed on your machine.
+
+### Building and Running the Container
+1. Build the Docker image:
+   ```bash
+   docker build -t nextjs-quiz-app
+   ```
+   
+2. Run the Docker container:
+   ```bash
+   docker run -p 3000:3000 nextjs-quiz-app
+   ```
+
+The application will be available at http://localhost:3000.
+
+## Running the App without Docker
 1. First, clone the repository into your local machine.
    ```bash
      git clone https://github.com/destructo570/quiz-web-app.git
