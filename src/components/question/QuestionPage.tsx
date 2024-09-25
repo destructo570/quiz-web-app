@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Button from "../button/Button";
 import "./questions.scss";
 import { Quiz, Submission } from "@/utils/types";
@@ -24,6 +24,14 @@ const QuestionPage = ({
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [show_score_page, setShowScorePage] = useState(false);
   const [savingSubmission, setSavingSubmission] = useState(false);
+  const [timer, setTimer] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer((prev) => prev + 1); // Increment timer every second
+    }, 1000);
+    return () => clearInterval(interval); // Cleanup the interval on component unmount or question change
+  }, [currentQuestion]);
 
   const currQuestion = useMemo(
     () => questions?.[currentQuestion],
@@ -48,17 +56,28 @@ const QuestionPage = ({
     setSavingSubmission(true);
     const response = await updateUserSubmission(quiz.id, submission);
     if (response?.status === 200) {
-      setCurrentQuestion(currentQuestion + 1);
+      if (!is_last_question) {
+        setCurrentQuestion(currentQuestion + 1);
+      } else {
+        setShowScorePage(true);
+      }
     }
     setSavingSubmission(false);
   };
 
   const onNextClick = () => {
-    if (currentQuestion + 1 < questions?.length && !is_last_question) {
-      onUpdateUserSubmission(currSubmission);
-    } else if (is_last_question) {
-      setShowScorePage(true);
-    }
+    if(!currSubmission?.question_id) return;
+
+    let submission = {
+      ...(currSubmission || {}),
+      submission_time: timer,
+    };
+    saveSubmission(submission);
+
+    // Reset the timer
+    setTimer(0);
+
+    onUpdateUserSubmission(submission);
   };
 
   const resetQuiz = () => {
