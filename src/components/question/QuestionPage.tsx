@@ -85,7 +85,18 @@ const QuestionPage = ({
               !currSubmission?.answer?.length)
           }
         >
-          {show_score_page ? "Start Again" : "Next"}
+          <div className="flex gap-4 items-center">
+            <p className="w-full">{show_score_page ? "Start Again" : "Next"}</p>
+            {!show_score_page ? (
+              <Image
+                width={16}
+                height={16}
+                src={"/icons/arrow_right.svg"}
+                alt="arrow_right"
+                className="self-stretch"
+              />
+            ) : null}
+          </div>
         </Button>
       </div>
     </div>
