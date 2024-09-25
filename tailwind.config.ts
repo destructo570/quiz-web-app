@@ -13,6 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
         primaryAccent: '#FF3B3C',
         secondaryAccent: '#AF9CF3',
+        textSecondary: '#AEAEAE',
       },
     },
   },
