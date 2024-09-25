@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import "./radio.scss";
+import "./Radio.scss";
 import { clsx } from "clsx";
 
 type CustomCheckboxProps = {

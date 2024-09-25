@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import "./checkbox.scss";
+import "./Checkbox.scss";
 import { clsx } from "clsx";
 
 type CustomCheckboxProps = {
