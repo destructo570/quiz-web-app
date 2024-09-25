@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { Nunito, Poppins} from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import clsx from "clsx";
 
-const nunito = Nunito({ subsets: ["latin"] });
+export const nunito = Nunito({ subsets: ["latin"] });
+export const poppins = Poppins({ subsets: ["latin"], weight: ["500", "700"] });
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
