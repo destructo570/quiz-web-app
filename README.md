@@ -11,8 +11,6 @@ This project is a quiz application built with Next.js 14. It features a timer th
 - react-rewards: For confetti animations.
 - Axios: HTTP client.
 
-## Run the project locally
-
 ## Running the App with Docker
 You can run the application inside a Docker container. To do so, follow the steps below.
 ### Prerequisites
