@@ -14,11 +14,11 @@ const Checkbox = (props: CustomCheckboxProps) => {
   const [isChecked, setIsChecked] = useState(defaultState);
 
   return (
-    <div className="checkbox-wrapper">
+    <div className={clsx("checkbox-wrapper", classes)}>
       <label className="flex gap-4 items-center cursor-pointer">
         <input
           type="checkbox"
-          className={clsx("checkbox-input", classes, { checked: isChecked })}
+          className={clsx("checkbox-input", { checked: isChecked })}
           checked={isChecked}
           onChange={() => setIsChecked((prev) => !prev)}
           {...rest}
