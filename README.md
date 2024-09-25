@@ -26,9 +26,9 @@ This project is a quiz application built with Next.js 14. It features a timer th
       npm install
    ```
 4. Then run the development server
-  ```bash
-     npm run dev
-  ```
+   ```bash
+      npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
