@@ -4,7 +4,12 @@ import Button from "../button/Button";
 import clsx from "clsx";
 import { poppins } from "@/app/layout";
 
-const QuizStartPage = ({setShowQuestionPage, isLoading}) => {
+interface QuizStartPageProps {
+  setShowQuestionPage: (show: boolean) => void;
+  isLoading: boolean;
+}
+
+const QuizStartPage = ({setShowQuestionPage, isLoading}: QuizStartPageProps) => {
   return (
     <div className="quiz-start-wrapper flex flex-col items-center justify-between h-full min-h-screen w-full p-8 bg-gradient-to-t from-secondaryAccent to-white">
       <Image src={"/icons/logo.svg"} height={70} width={180} alt="logo" />

@@ -5,10 +5,6 @@ import Radio from "../radio/Radio";
 import { Option, Question, Submission } from "@/utils/types";
 import clsx from "clsx";
 import "react-circular-progressbar/dist/styles.css";
-import {
-  buildStyles,
-  CircularProgressbarWithChildren,
-} from "react-circular-progressbar";
 import ProgressBar from "../ProgressBar";
 
 interface QuestionContainerProps {

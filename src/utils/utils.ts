@@ -1,6 +1,6 @@
 import { Question, Quiz, Submission } from "./types";
 
-export function areArraysEqual(arr1, arr2) {
+export function areArraysEqual(arr1: number[], arr2: number[]) {
   // Check if arrays have the same length
   if (arr1.length !== arr2.length) return false;
 
